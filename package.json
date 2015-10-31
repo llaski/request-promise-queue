@@ -1,0 +1,29 @@
+{
+  "name": "request-promise-queue",
+  "version": "0.0.1",
+  "description": "Request Promise Queue Library - designs when you want to fire a callback for many ajax requests but dont want to blast your server with hundreds of requests at once",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint index.js && ./node_modules/.bin/eslint lib && ./node_modules/.bin/eslint tests",
+    "test": "./node_modules/.bin/babel-tape-runner ./tests/index.js | tap-spec",
+    "watch": "watch 'clear && npm run lint && npm test' lib/ tests/"
+  },
+  "keywords": [
+    "request",
+    "promise",
+    "queue"
+  ],
+  "author": "Larry Laski",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.65.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "babel-tape-runner": "^1.2.0",
+    "eslint": "^1.8.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2",
+    "watch": "^0.16.0"
+  }
+}
