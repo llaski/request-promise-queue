@@ -20,3 +20,33 @@
 
 
 // RequestPromiseQueue.fire(url, requestOptions, arrayData).then(function(){}, function() {})
+//
+
+var Promise = require('es6-promise').Promise;
+var defaultsDeep = require('lodash.defaultsdeep');
+var chunk = require('./lib/chunk');
+var queueRequests = require('./lib/queueRequests');
+
+module.exports = {
+
+	send: function(url, requestOptions, requestData) {
+		if (!url) {
+			throw new Error('A url must be provided');
+		}
+
+		requestOptions = defaultsDeep(requestOptions || {}, {
+			url: url
+		});
+
+		requestData = defaultsDeep(requestData || {}, {
+			data: [],
+			size: 2
+		});
+
+		var queues = chunk(requestData.data, requestData.size).map(function(arr) {
+			return queueRequests(url, requestOptions, arr);
+		});
+
+		return Promise.all(queues);
+	}
+};

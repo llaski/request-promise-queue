@@ -1,10 +1,6 @@
 import test from 'tape';
 import chunk from '../lib/chunk';
 
-class test {
-
-}
-
 const build = (size) => {
 
     let arr = [];
