@@ -29,13 +29,13 @@ var queueRequests = require('./lib/queueRequests');
 
 module.exports = {
 
-	send: function(url, requestOptions, requestData) {
-		if (!url) {
-			throw new Error('A url must be provided');
+	send: function(uri, requestOptions, requestData) {
+		if (!uri) {
+			throw new Error('A uri must be provided');
 		}
 
 		requestOptions = defaultsDeep(requestOptions || {}, {
-			url: url
+			uri: uri
 		});
 
 		requestData = defaultsDeep(requestData || {}, {
@@ -44,7 +44,7 @@ module.exports = {
 		});
 
 		var queues = chunk(requestData.data, requestData.size).map(function(arr) {
-			return queueRequests(url, requestOptions, arr);
+			return queueRequests(requestOptions, arr);
 		});
 
 		return Promise.all(queues);
