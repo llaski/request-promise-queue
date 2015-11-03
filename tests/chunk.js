@@ -1,27 +1,27 @@
-import test from 'tape';
-import chunk from '../lib/chunk';
+var test = require('tape');
+var chunk = require('../src/chunk');
 
-const build = (size) => {
+var build = function(size) {
 
-    let arr = [];
-    for (let i = 0; i < size; i++) {
+    var arr = [];
+    for (var i = 0; i < size; i++) {
         arr.push(i + 1);
     }
 
     return arr;
 };
 
-test('chunk is a function', assert => {
-    const actual = typeof chunk;
-    const expected = 'function';
+test('chunk is a function', function(assert) {
+    var actual = typeof chunk;
+    var expected = 'function';
 
     assert.equal(actual, expected, 'chunk should be a function');
     assert.end();
 });
 
-test('returns 2 chunks of 1', assert => {
-    const actual = chunk([1, 2], 1);
-    const expected = [
+test('returns 2 chunks of 1', function(assert) {
+    var actual = chunk([1, 2], 1);
+    var expected = [
         [1],
         [2]
     ];
@@ -30,9 +30,9 @@ test('returns 2 chunks of 1', assert => {
     assert.end();
 });
 
-test('returns 1 chunk of 2', assert => {
-    const actual = chunk([1, 2]);
-    const expected = [
+test('returns 1 chunk of 2', function(assert) {
+    var actual = chunk([1, 2]);
+    var expected = [
         [1, 2]
     ];
 
@@ -40,9 +40,9 @@ test('returns 1 chunk of 2', assert => {
     assert.end();
 });
 
-test('returns 1 chunk of 8', assert => {
-    const actual = chunk([1, 2, 3, 4, 5, 6, 7, 8], 8);
-    const expected = [
+test('returns 1 chunk of 8', function(assert) {
+    var actual = chunk([1, 2, 3, 4, 5, 6, 7, 8], 8);
+    var expected = [
         [1, 2, 3, 4, 5, 6, 7, 8]
     ];
 
@@ -50,9 +50,9 @@ test('returns 1 chunk of 8', assert => {
     assert.end();
 });
 
-test('returns 2 chunks of 2', assert => {
-    const actual = chunk([1, 2, 3, 4]);
-    const expected = [
+test('returns 2 chunks of 2', function(assert) {
+    var actual = chunk([1, 2, 3, 4]);
+    var expected = [
         [1, 2],
         [3, 4]
     ];
@@ -61,9 +61,9 @@ test('returns 2 chunks of 2', assert => {
     assert.end();
 });
 
-test('returns 4 chunks of 1', assert => {
-    const actual = chunk([1, 2, 3, 4], 1);
-    const expected = [
+test('returns 4 chunks of 1', function(assert) {
+    var actual = chunk([1, 2, 3, 4], 1);
+    var expected = [
         [1],
         [2],
         [3],
@@ -74,9 +74,9 @@ test('returns 4 chunks of 1', assert => {
     assert.end();
 });
 
-test('returns 4 chunks of 2', assert => {
-    const actual = chunk([1, 2, 3, 4, 5, 6, 7, 8]);
-    const expected = [
+test('returns 4 chunks of 2', function(assert) {
+    var actual = chunk([1, 2, 3, 4, 5, 6, 7, 8]);
+    var expected = [
         [1, 2],
         [3, 4],
         [5, 6],
@@ -87,9 +87,9 @@ test('returns 4 chunks of 2', assert => {
     assert.end();
 });
 
-test('returns 2 chunks of 7 and 1', assert => {
-    const actual = chunk([1, 2, 3, 4, 5, 6, 7, 8], 7);
-    const expected = [
+test('returns 2 chunks of 7 and 1', function(assert) {
+    var actual = chunk([1, 2, 3, 4, 5, 6, 7, 8], 7);
+    var expected = [
         [1, 2, 3, 4, 5, 6, 7],
         [8]
     ];
@@ -98,9 +98,9 @@ test('returns 2 chunks of 7 and 1', assert => {
     assert.end();
 });
 
-test('returns 5 chunks of 10', assert => {
-    const actual = chunk(build(50), 10);
-    const expected = [
+test('returns 5 chunks of 10', function(assert) {
+    var actual = chunk(build(50), 10);
+    var expected = [
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],

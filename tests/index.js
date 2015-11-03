@@ -1,3 +1,3 @@
-import './chunk';
-import './queueRequests';
-import './request-promise-queue';
+require('./chunk');
+require('./queueRequests');
+require('./request-promise-queue');
