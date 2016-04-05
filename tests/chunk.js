@@ -1,7 +1,9 @@
+'use strict';
+
 var test = require('tape');
 var chunk = require('../src/chunk');
 
-var build = function(size) {
+var build = function build(size) {
 
     var arr = [];
     for (var i = 0; i < size; i++) {

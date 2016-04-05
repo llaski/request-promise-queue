@@ -4,10 +4,18 @@ var defaultsDeep = require('lodash.defaultsdeep');
 var chunk = require('./chunk');
 var queueRequests = require('./queueRequests');
 
-;
-(function() {
-
-	var root = this;
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        // Node, CommonJS-like
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory();
+    }
+}(this, function() {
 
     var RequestPromiseQueue = {
         send: function(uri, requestOptions, requestData) {
@@ -33,14 +41,16 @@ var queueRequests = require('./queueRequests');
         }
     };
 
-    if (typeof exports !== 'undefined') {
-        if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = RequestPromiseQueue;
-        }
+    return RequestPromiseQueue;
 
-        exports.RequestPromiseQueue = RequestPromiseQueue;
-    } else {
-        root.RequestPromiseQueue = RequestPromiseQueue;
-    }
+    // if (typeof exports !== 'undefined') {
+    //     if (typeof module !== 'undefined' && module.exports) {
+    //         exports = module.exports = RequestPromiseQueue;
+    //     }
 
-}).call(this);
+    //     exports.RequestPromiseQueue = RequestPromiseQueue;
+    // } else {
+    //     root.RequestPromiseQueue = RequestPromiseQueue;
+    // }
+
+}));

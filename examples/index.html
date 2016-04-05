@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>File Upload Queue Example</h1>
+        <p>This example shows how to use the request promise queue library in conjunction with a file upload.</p>
+        <p>
+            <form id="form" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">File Upload</label>
+                    <input type="file" id="file">
+                </div>
+                <p><a href="/marvel-data.csv">Download Test CSV to Upload</a></p>
+                <button class="btn btn-primary btn-lg">Upload</button>
+            </form>
+
+            <ul id="result-list"></ul>
+        </p>
+      </div>
+
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

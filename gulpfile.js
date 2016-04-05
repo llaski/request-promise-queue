@@ -9,18 +9,18 @@ gulp.task('connect', function() {
 	connect.server({
 		base: 'http://localhost',
 		port: 9000,
-		root: './dist',
+		root: './examples',
 		livereload: true
 	});
 });
 
 gulp.task('js', function() {
-  browserify('./src/RequestPromiseQueue.js')
+  browserify('./examples/example.js')
   .transform(babelify)
   .bundle()
   .on('error', util.log.bind(util, 'Browserify Error'))
-  .pipe(source('RequestPromiseQueue.js'))
-  .pipe(gulp.dest('./dist'))
+  .pipe(source('app.js'))
+  .pipe(gulp.dest('./examples'))
   .pipe(connect.reload());
 });
 
@@ -39,5 +39,5 @@ gulp.task('default', ['js', 'connect', 'watch'], function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['js']);
+  gulp.watch(['src/**/*.js', 'examples/example.js'], ['js']);
 });
