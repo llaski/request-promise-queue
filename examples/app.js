@@ -52700,16 +52700,6 @@ var queueRequests = require('./queueRequests');
     };
 
     return RequestPromiseQueue;
-
-    // if (typeof exports !== 'undefined') {
-    //     if (typeof module !== 'undefined' && module.exports) {
-    //         exports = module.exports = RequestPromiseQueue;
-    //     }
-
-    //     exports.RequestPromiseQueue = RequestPromiseQueue;
-    // } else {
-    //     root.RequestPromiseQueue = RequestPromiseQueue;
-    // }
 });
 
 },{"./chunk":359,"./queueRequests":360,"lodash.defaultsdeep":246}],359:[function(require,module,exports){

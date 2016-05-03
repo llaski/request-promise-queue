@@ -42,15 +42,4 @@ var queueRequests = require('./queueRequests');
     };
 
     return RequestPromiseQueue;
-
-    // if (typeof exports !== 'undefined') {
-    //     if (typeof module !== 'undefined' && module.exports) {
-    //         exports = module.exports = RequestPromiseQueue;
-    //     }
-
-    //     exports.RequestPromiseQueue = RequestPromiseQueue;
-    // } else {
-    //     root.RequestPromiseQueue = RequestPromiseQueue;
-    // }
-
 }));

@@ -14,7 +14,7 @@ For example if a user uploaded a file with 5k rows worth of data and you need to
 ### Demo
 
 `npm install`
-`gulp`
+`./node_modules/.bin/gulp`
 
 Open http://localhost:9000 and follow the instructions
 
