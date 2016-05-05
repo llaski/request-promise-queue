@@ -29,9 +29,11 @@ var uploadData = function uploadData(data) {
 
     resultList.innerHTML = '<i class="fa fa-spinner fa-pulse" style="margin: 20px auto;"></i><p>Processing Results...</p>';
 
-    window.RequestPromiseQueue.send(url, {}, {
+    window.RequestPromiseQueue.send(url, {
+        delay: 3000
+    }, {
         data: data,
-        size: size
+        size: size,
     }).then(function(results) {
         resultList.innerHTML = '';
         displayResults(results);

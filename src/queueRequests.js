@@ -25,7 +25,9 @@ module.exports = function(requestOptions, data) {
 				body: body
 			});
 
-			sendRequest(queuedData.shift(), queuedData, resolve, reject);
+			setTimeout(function() {
+				sendRequest(queuedData.shift(), queuedData, resolve, reject);
+			}, requestOptions.delay || 0);
 		})
 	};
 

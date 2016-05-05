@@ -30,7 +30,9 @@ var uploadData = function uploadData(data) {
 
     resultList.innerHTML = '<i class="fa fa-spinner fa-pulse" style="margin: 20px auto;"></i><p>Processing Results...</p>';
 
-    window.RequestPromiseQueue.send(url, {}, {
+    window.RequestPromiseQueue.send(url, {
+        delay: 3000
+    }, {
         data: data,
         size: size
     }).then(function (results) {
@@ -52745,7 +52747,9 @@ module.exports = function (requestOptions, data) {
 				body: body
 			});
 
-			sendRequest(queuedData.shift(), queuedData, resolve, reject);
+			setTimeout(function () {
+				sendRequest(queuedData.shift(), queuedData, resolve, reject);
+			}, requestOptions.delay || 0);
 		});
 	};
 
